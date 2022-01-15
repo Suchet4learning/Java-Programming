@@ -7,11 +7,11 @@ public class UnicodeBefore {
         Scanner sc= new Scanner(System.in);
         String Inp = sc.nextLine();
 
-        int Pos = sc.nextInt();
-        System.out.println("The unicode value of character before " + Inp.charAt(Pos) + " is : " + Inp.codePointBefore(Pos));
+        int Start = sc.nextInt();
+        int End = sc.nextInt();
 
-        Pos = sc.nextInt();
-        System.out.println("The unicode value of character before " + Inp.charAt(Pos) + " is : " + Inp.codePointBefore(Pos));
-
+        System.out.println("The unicode value of character before " + Inp.charAt(Start) + " is : " + Inp.codePointBefore(Start));
+        System.out.println("The unicode value of character before " + Inp.charAt(End) + " is : " + Inp.codePointBefore(End));
+        System.out.println("Codepoint Count is : " + Inp.codePointCount(Start, End));
     }
 }
