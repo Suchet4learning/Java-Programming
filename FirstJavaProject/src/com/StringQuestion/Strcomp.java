@@ -46,5 +46,11 @@ public class Strcomp {
         Inp1 = Inp1.concat(Inp2);
         System.out.println("The concatenated string is: " + Inp1);
 
+        Inp1 = "PHP Exercises and Python Exercises";
+        Inp2 = "and";
+
+        System.out.println("The string " + Inp2 + " is contained within the string " + Inp1 + " is: " + Inp1.contains(Inp2));
+
+
     }
 }
