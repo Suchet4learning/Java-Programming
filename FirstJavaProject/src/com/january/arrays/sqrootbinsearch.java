@@ -9,8 +9,8 @@ public class sqrootbinsearch {
         int mid, ans = 0;
 
         while (s<=e) {
-            mid = (s+e)/2;
-            if (mid*mid<=n) {
+            mid = (s +((e-s)/2));
+            if ((long)mid * mid <= n) {
                 ans = mid;
                 s = mid + 1;
             }
@@ -24,6 +24,6 @@ public class sqrootbinsearch {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        System.out.println(sqrtbin(n));
+        System.out.print(sqrtbin(n));
     }
 }
