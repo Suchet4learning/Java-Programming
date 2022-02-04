@@ -5,15 +5,17 @@ import java.util.Scanner;
 public class change_in_reverse {
 
     public int countRev(String A) {
-        String Revs = "";
+        //String Revs = "";
         int diff=0, j=0;
+
         for (int i=A.length()-1; i>=0; i--) {
-            Revs = Revs + A.charAt(i);
+            //Revs = Revs + A.charAt(i);
             if (A.charAt(j) != A.charAt(i)) {
                 diff++;
             }
             j++;
         }
+        //System.out.println(Revs.compareTo(A));
 
         /* for (int i=0; i<A.length(); i++) {
             if (A.charAt(i) != Revs.charAt(i)) {
