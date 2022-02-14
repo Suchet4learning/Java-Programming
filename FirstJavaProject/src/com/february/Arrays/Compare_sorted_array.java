@@ -25,6 +25,7 @@ public class Compare_sorted_array {
             Collections.sort(D);
 
             if (C.equals(D)) {
+            //if (C.size() == D.size() && C.containsAll(D)) {
                 Ans.add(1);
             }
             else {
