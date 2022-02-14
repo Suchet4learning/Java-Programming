@@ -8,23 +8,25 @@ public class Compare_sorted_array {
 
     public ArrayList<Integer> solve(ArrayList<Integer> A, ArrayList<ArrayList<Integer>> B) {
 
-        ArrayList<Integer> C = new ArrayList<>();
-        ArrayList<Integer> D = new ArrayList<>();
+        //ArrayList<Integer> C = new ArrayList<>();
+        //ArrayList<Integer> D = new ArrayList<>();
         ArrayList<Integer> Ans = new ArrayList<>();
 
         int i = 0, j, l1, r1, l2, r2;
         while (i < B.size()) {
-            j = 0; C.clear(); D.clear();
+            j = 0; //C.clear(); D.clear();
             l1 = B.get(i).get(j);
             r1 = B.get(i).get(j+1);
             l2 = B.get(i).get(j+2);
             r2 = B.get(i).get(j+3);
-            C.addAll(A.subList(l1,r1+1));
-            D.addAll(A.subList(l2,r2+1));
-            Collections.sort(C);
-            Collections.sort(D);
+            //C.addAll(A.subList(l1,r1+1));
+            //D.addAll(A.subList(l2,r2+1));
+            //Collections.sort(C);
+            //Collections.sort(D);
 
-            if (C.equals(D)) {
+            if (A.subList(l1,r1+1).containsAll(A.subList(l2,r2+1))
+                    && (A.subList(l1,r1+1).size() == A.subList(l2,r2+1).size())) {
+            //if (C.containsAll(D)) {
             //if (C.size() == D.size() && C.containsAll(D)) {
                 Ans.add(1);
             }
