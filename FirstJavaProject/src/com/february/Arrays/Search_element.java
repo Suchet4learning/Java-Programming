@@ -8,6 +8,7 @@ public class Search_element {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+
         // The number of Array and element pairs
         int n = sc.nextInt();
         char find;
@@ -16,7 +17,7 @@ public class Search_element {
         for (int i=0; i < n; i++) {
             find = 'N';
 
-            // Get the size of array for each teach case
+            // Get the size of array for each test case
             int m = sc.nextInt();
             int [] A = new int[m];
 
