@@ -6,27 +6,21 @@ public class Byes {
 
     public int solve(int A, int B) {
 
-        int bye=-1, i, j, n;
+        int bye=-1, i, j=A, n;
         n = (int) (Math.log(A) / Math.log(2));
 
         if (B > n) {
             j = (int) Math.pow(2,B);
-        } else {
-            j = (int) Math.pow(2,n);
         }
-
-        if (j < A) j = A;
 
         while (bye != B) {
             bye = 0; i=j;
             while (i > 1) {
                 if (i % 2 != 0) {
                     bye++;
-                    //System.out.println(bye);
                 }
                 if (bye > B) break;
                 i = (i + 1) / 2;
-                //System.out.println(i);
             }
             j++;
         }
