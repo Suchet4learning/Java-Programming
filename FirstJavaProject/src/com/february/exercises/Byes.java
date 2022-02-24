@@ -5,7 +5,18 @@ import java.util.Scanner;
 public class Byes {
 
     public int solve(int A, int B) {
-        int bye=-1, i, j=A;
+
+        int bye=-1, i, j, n;
+        n = (int) (Math.log(A) / Math.log(2));
+
+        if (B > n) {
+            j = (int) Math.pow(2,B);
+        } else {
+            j = (int) Math.pow(2,n);
+        }
+
+        if (j < A) j = A;
+
         while (bye != B) {
             bye = 0; i=j;
             while (i > 1) {
