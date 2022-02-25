@@ -5,38 +5,33 @@ import java.util.Scanner;
 
 public class Equilibrium_index {
 
-    public int solve(ArrayList<Integer> a) {
+    public int solve(ArrayList<Integer> A) {
 
-        int eq = 0, sum_l, sum_r;
+        int suml=0, sumr, n = A.size()-1;
 
-        while (eq < a.size()) {
-
-            sum_l = 0; sum_r = 0;
-            for (int i = 0; i < a.size(); i++) {
-                if (i < eq) {
-                    sum_l = sum_l + a.get(i);
-                }
-                if (i > eq) {
-                    sum_r = sum_r + a.get(i);
-                }
-            }
-            if (sum_l == sum_r) return eq;
-            eq++;
+        for (int i = 1; i < A.size(); i++) {
+            A.set(i,(A.get(i-1) + A.get(i)));
         }
-        return eq=-1;
+
+        for (int j=0; j<A.size();j++) {
+             sumr = A.get(n) - A.get(j);
+             if (j>0) suml = A.get(j-1);
+             if (suml == sumr) return j;
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> A = new ArrayList<>();
+        ArrayList<Integer> a = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         Equilibrium_index obj = new Equilibrium_index();
 
         for (int i=0; i<n; i++) {
-            A.add(sc.nextInt());
+            a.add(sc.nextInt());
         }
 
-        System.out.println(obj.solve(A));
+        System.out.println(obj.solve(a));
     }
 }
