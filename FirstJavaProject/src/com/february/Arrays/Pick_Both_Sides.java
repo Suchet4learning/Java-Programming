@@ -5,31 +5,47 @@ import java.util.Scanner;
 
 public class Pick_Both_Sides {
 
-    public int solve(ArrayList<Integer> a, int b) {
+    public int solve(ArrayList<Integer> A, int B) {
 
-        for (int i=1; i<a.size(); i++) {
-            a.set(i, a.get(i-1)+a.get(i));
+        int n = A.size()-1, x=B-1, y=0;
+
+        for (int i=1; i<A.size(); i++)
+            A.set(i, A.get(i-1)+A.get(i));
+
+        int max = A.get(x);
+
+        if (n % x !=0) {
+            if ((A.get(n) - A.get(n - x - 1)) > max)
+                max = A.get(n) - A.get(n - x - 1);
+        }
+        //System.out.println(A.get(n) - A.get(n-x-1));
+
+        while (x>0) {
+            if (A.get(y) + A.get(n) - A.get(n - x) > max) {
+                max = A.get(y) + A.get(n) - A.get(n - x);
+                //System.out.println(max);
+            }
+            /*System.out.println("Y: " + y + ", X: " + x + ", A.get(n): " + A.get(n) + ", A.get(n-x): " +
+                    A.get(n - x) + ", A.get(y): " + A.get(y));
+            System.out.println(A.get(y) + A.get(n) - A.get(n - x));*/
+            x--; y++;
         }
 
-        int max = a.get(b-1);
-        if (a.get((a.size()-1)-(b-1)) > max) {
-            max = a.get((a.size() - 1) - (b - 1));
-        }
-        return 1;
+        return max;
     }
 
     public static void main(String[] args) {
 
         Scanner sc= new Scanner(System.in);
-        int n = sc.nextInt(), B;
-        ArrayList<Integer> A = new ArrayList<>();
+        int n = sc.nextInt(), b;
+        ArrayList<Integer> a = new ArrayList<>();
         Pick_Both_Sides obj = new Pick_Both_Sides();
 
         for (int i=0; i<n; i++) {
-            A.add(sc.nextInt());
+            a.add(sc.nextInt());
         }
 
-        B = sc.nextInt();
-        System.out.println(obj.solve(A,B));
+        b = sc.nextInt();
+        System.out.println(obj.solve(a,b));
     }
 }
