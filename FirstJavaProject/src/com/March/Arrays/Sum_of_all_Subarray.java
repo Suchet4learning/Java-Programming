@@ -1,6 +1,8 @@
 package com.March.Arrays;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Sum_of_all_Subarray {
@@ -20,6 +22,8 @@ public class Sum_of_all_Subarray {
 
     public static void main(String[] args) {
 
+        SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS");
+
         Scanner sc= new Scanner(System.in);
         int n = sc.nextInt();
         ArrayList<Integer> x = new ArrayList<>();
@@ -29,7 +33,11 @@ public class Sum_of_all_Subarray {
             x.add(sc.nextInt());
         }
 
+        Date dt = new Date();
+        System.out.println(fmt.format(dt));
         System.out.println(obj.subarraySum(x));
+        dt = new Date();
+        System.out.println(fmt.format(dt));
 
     }
 }
