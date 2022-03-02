@@ -1,13 +1,14 @@
 package com.March.Arrays;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Max_Sum_Subarray {
 
-    public int maxSubArray(ArrayList<Integer> A) {
+    public int maxSubArray(final List<Integer> A) {
 
         int sum, max = Integer.MIN_VALUE;
 
@@ -29,7 +30,7 @@ public class Max_Sum_Subarray {
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        ArrayList<Integer> a = new ArrayList<>();
+        List<Integer> a = new ArrayList<>();
         Max_Sum_Subarray obj = new Max_Sum_Subarray();
 
         for (int i=0; i<n; i++) {
