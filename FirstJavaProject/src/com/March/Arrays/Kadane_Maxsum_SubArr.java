@@ -1,4 +1,5 @@
 /*
+Q1. Max Sum Contiguous Subarray
 Problem Description
 Find the contiguous non empty subarray within an array, A of length N which has the largest sum.
 
@@ -27,12 +28,14 @@ Output 2: 6
 Example Explanation
 Explanation 1:
 
- The subarray [1, 2, 3, 4] has the maximum possible sum of 10.
+The subarray [1, 2, 3, 4] has the maximum possible sum of 10.
 Explanation 2:
 
- The subarray [4,-1,2,1] has the maximum possible sum of 6.
+The subarray [4,-1,2,1] has the maximum possible sum of 6.
 
- */
+This algorithm has performance O(n^3)
+
+*/
 
 package com.March.Arrays;
 
@@ -42,22 +45,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Contiguous_Maxsum {
+public class Kadane_Maxsum_SubArr {
 
     public int maxSubArray(final List<Integer> A) {
 
-        int sum, max = Integer.MIN_VALUE;
+        int sum = 0, max = A.get(0);
 
         for (int i=0; i<A.size(); i++) {
-            sum = 0;
-            for (int j=i; j<A.size(); j++) {
-                sum = sum + A.get(j);
-                if (sum > max) max = sum;
-            }
+            sum = sum + A.get(i);
+            sum = Math.max(A.get(i),sum);
+            if (sum > max) max = sum;
         }
         return max;
     }
-
 
     public static void main(String[] args) {
 
@@ -66,24 +66,19 @@ public class Contiguous_Maxsum {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         List<Integer> a = new ArrayList<>();
-        Contiguous_Maxsum obj = new Contiguous_Maxsum();
+        Kadane_Maxsum_SubArr obj = new Kadane_Maxsum_SubArr();
 
         for (int i = 0; i < n; i++) {
             a.add(sc.nextInt());
         }
 
-        /*
-        Date dt = new Date();
-        System.out.println(fmt.format(dt));
-        */
+        /* Date dt = new Date();
+        System.out.println(fmt.format(dt)); */
 
         System.out.println(obj.maxSubArray(a));
 
-        /*
-        dt = new Date();
-        System.out.println(fmt.format(dt));
-        */
+        /* dt = new Date();
+        System.out.println(fmt.format(dt)); */
 
     }
-
 }
