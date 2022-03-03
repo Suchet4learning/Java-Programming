@@ -36,33 +36,23 @@ Explanation 2:
 
 package com.March.Arrays;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
-public class Max_Sum_Subarr_opt {
+public class Contiguous_Maxsum {
 
-    public int maxSubArray(final ArrayList<Integer> A) {
+    public int maxSubArray(final List<Integer> A) {
 
         int sum, max = Integer.MIN_VALUE;
-        ArrayList<Integer> B = new ArrayList<>(A);
 
-        for(int i=1; i<B.size();i++) {
-            B.set(i,B.get(i) + B.get(i-1));
-        }
-        //System.out.println(A);
-
-        for (int i=0; i<B.size(); i++) {
-            for (int j=i; j<B.size(); j++) {
-
-                if (i>0)
-                    sum = B.get(j) - B.get(i-1);
-                else
-                    sum = B.get(j);
-
+        for (int i=0; i<A.size(); i++) {
+            sum = 0;
+            for (int j=i; j<A.size(); j++) {
+                sum = sum + A.get(j);
                 if (sum > max) max = sum;
-
             }
         }
         return max;
@@ -74,17 +64,25 @@ public class Max_Sum_Subarr_opt {
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        ArrayList<Integer> a = new ArrayList<>();
-        Max_Sum_Subarr_opt obj = new Max_Sum_Subarr_opt();
+        List<Integer> a = new ArrayList<>();
+        Contiguous_Maxsum obj = new Contiguous_Maxsum();
 
-        for (int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             a.add(sc.nextInt());
         }
+
+        /*
         Date dt = new Date();
         System.out.println(fmt.format(dt));
+        */
+
         System.out.println(obj.maxSubArray(a));
+
+        /*
         dt = new Date();
         System.out.println(fmt.format(dt));
+        */
 
     }
+
 }
