@@ -51,7 +51,36 @@ The third anti diagonal of the matrix is [3, 0, 0 ], the rest spaces shoud be fi
 
 package com.March.Day30;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Anti_Diagonals {
 
+    public ArrayList<ArrayList<Integer>> diagonal(ArrayList<ArrayList<Integer>> A) {
+        ArrayList<ArrayList<Integer>> B = new ArrayList<>();
+        int j =0, k=0, i=0;
+
+        return B;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<ArrayList<Integer>> a = new ArrayList<>();
+        int row = sc.nextInt();
+        int col = sc.nextInt();
+
+        Anti_Diagonals obj = new Anti_Diagonals();
+
+        for (int i=0; i<row; i++) {
+            a.add(new ArrayList<>());
+            for (int j=0; j<col;j++) {
+                a.get(i).add(sc.nextInt());
+            }
+        }
+
+        System.out.println(a);
+        System.out.println(obj.diagonal(a));
+
+    }
 
 }
