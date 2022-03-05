@@ -1,35 +1,42 @@
 /*
 Problem Description
-You are given a matrix A, you have to return another matrix which is the transpose of A.
-NOTE: Transpose of a matrix A is defined as - AT[i][j] = A[j][i] ; Where 1 ≤ i ≤ col and 1 ≤ j ≤ row
+You are given two integer matrices A and B having same size(Both having same number of rows (N) and columns (M)). You have to subtract matrix A from B and return the resultant matrix. (i.e. return the matrix A - B).
+If X and Y are two matrices of the same order (same dimensions). Then X - Y is a matrix of the same order as X and Y and its elements are obtained by subtracting the elements of Y from the corresponding elements of X. Thus if Z = [z[i][j]] = X - Y, then [z[i][j]] = [x[i][j]] – [y[i][j]].
 
 Problem Constraints
-1 <= A.size() <= 1000
-1 <= A[i].size() <= 1000
-1 <= A[i][j] <= 1000
+1 <= N, M <= 103
+-109 <= A[i][j], B[i][j] <= 109
 
 Input Format
-First argument is vector of vector of integers A representing matrix.
+First argument is a 2D integer matrix A.
+Second argument is a 2D integer matrix B.
 
 Output Format
-You have to return a vector of vector of integers after doing required operations.
+Return a 2D matrix denoting A - B.
 
 Example Input
 Input 1:
-A = [[1, 2, 3],[4, 5, 6],[7, 8, 9]]
+ A = [[1, 2, 3],            B = [[9, 8, 7],
+      [4, 5, 6],                 [6, 5, 4],
+      [7, 8, 9]]                 [3, 2, 1]]
 Input 2:
-A = [[1, 2],[1, 2],[1, 2]]
+ A = [[1, 1]]               B = [[2, 3]]
 
 Example Output
 Output 1:
-[[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+ [[-8, -6, -4],
+  [-2, 0, 2],
+  [4, 6, 8]]
 Output 2:
-[[1, 1, 1], [2, 2, 2]]
+ [[-1, -2]]
 
 Example Explanation
 Explanation 1:
-Cearly after converting rows to column and columns to rows of [[1, 2, 3],[4, 5, 6],[7, 8, 9]] we will get [[1, 4, 7], [2, 5, 8], [3, 6, 9]].
+ image
+Explanation 2:
+ [[1, 1]] - [[2, 3]] = [[1 - 2, 1 - 3]] = [[-1, -2]]
  */
+
 
 package com.March.Day30;
 
