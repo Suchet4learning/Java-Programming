@@ -58,8 +58,33 @@ public class Anti_Diagonals {
 
     public ArrayList<ArrayList<Integer>> diagonal(ArrayList<ArrayList<Integer>> A) {
         ArrayList<ArrayList<Integer>> B = new ArrayList<>();
-        int j =0, k=0, i=0;
-
+        int x, y, z=0;
+        for (int i=0; i<A.size(); i++) {
+            B.add(new ArrayList<>());
+            x = 0; y = i;
+            while ((x<A.size()) && (y>=0)) {
+                B.get(z).add(A.get(x).get(y));
+                x++; y--;
+            }
+            while (x<A.size()) {
+                B.get(z).add(0);
+                x++;
+            }
+            z++;
+        }
+        for (int i=1; i<A.size(); i++) {
+            B.add(new ArrayList<>());
+            x = i; y = A.size()-1;
+            while ((x<A.size()) && (y>=0)) {
+                B.get(z).add(A.get(x).get(y));
+                x++; y--;
+            }
+            while(y>=0){
+                B.get(z).add(0);
+                y--;
+            }
+            z++;
+        }
         return B;
     }
 
@@ -77,7 +102,6 @@ public class Anti_Diagonals {
                 a.get(i).add(sc.nextInt());
             }
         }
-
         System.out.println(a);
         System.out.println(obj.diagonal(a));
 
