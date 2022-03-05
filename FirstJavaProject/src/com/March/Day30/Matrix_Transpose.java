@@ -34,5 +34,40 @@ Cearly after converting rows to column and columns to rows of [[1, 2, 3],[4, 5, 
 
 package com.March.Day30;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Matrix_Transpose {
+
+    public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A) {
+
+        ArrayList<ArrayList<Integer>> B = new ArrayList<>();
+
+        for (int i=0; i<A.get(0).size(); i++) {
+            B.add(new ArrayList<>());
+            for (int j=0; j<A.size(); j++) {
+                B.get(i).add(A.get(j).get(i));
+            }
+        }
+        return B;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        ArrayList<ArrayList<Integer>> a = new ArrayList<>();
+        Matrix_Transpose obj = new Matrix_Transpose();
+
+        for (int i=0; i<r; i++) {
+            a.add(new ArrayList<>());
+            for (int j=0; j<c; j++) {
+                a.get(i).add(sc.nextInt());
+            }
+        }
+        System.out.println(obj.solve(a));
+    }
 }
+
+
