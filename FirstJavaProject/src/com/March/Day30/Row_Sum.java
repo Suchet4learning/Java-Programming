@@ -67,7 +67,6 @@ public class Row_Sum {
                 a.get(i).add(sc.nextInt());
             }
         }
-
         System.out.println(obj.solve(a));
     }
 
