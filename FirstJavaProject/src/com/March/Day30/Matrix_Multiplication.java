@@ -8,18 +8,22 @@ public class Matrix_Multiplication {
     public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, ArrayList<ArrayList<Integer>> B) {
 
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        int sum, sum1;
+        int sum, x, y;
 
-        for (int i=0; i<A.get(0).size(); i++) {
-            res.add(new ArrayList<>()); sum = 0;
             for (int j=0; j<A.size(); j++) {
-                sum = sum + A.get(i).get(j) * B.get(j).get(i); sum1= 0;
-                for (int k=0; k<B.get(0).size();k++) {
-                    sum1 = sum1 + A.get(j).get(k) * A.get(k).get(j);
+                res.add(new ArrayList<>());
+                x=0;
+                while (x<B.get(0).size()) {
+                    y = 0;
+                    sum = 0;
+                    while (y < B.size()) {
+                        sum = sum + A.get(j).get(y) * B.get(y).get(x);
+                        y++;
+                    }
+                    res.get(j).add(x, sum);
+                    x++;
                 }
             }
-            res.get(i).add(sum);
-        }
         return res;
     }
 
