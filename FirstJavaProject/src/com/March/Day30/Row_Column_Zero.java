@@ -41,10 +41,7 @@ public class Row_Column_Zero {
 
         ArrayList<ArrayList<Integer>> B = new ArrayList<>();
         for (int i=0; i<A.size(); i++) {
-            B.add(new ArrayList<>());
-            for (int j=0; j<A.get(i).size();j++) {
-                B.get(i).add(A.get(i).get(j));
-            }
+            B.add(new ArrayList<>(A.get(i)));
         }
         int x,y;
         for (int i=0; i<A.size(); i++) {
@@ -60,8 +57,6 @@ public class Row_Column_Zero {
                             y++;
                     }
                 }
-                System.out.println(A);
-                System.out.println(B);
             }
         }
         return B;
