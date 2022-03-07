@@ -44,13 +44,25 @@ public class Christmas_trees {
 
     public int solve(ArrayList<Integer> A, ArrayList<Integer> B) {
 
-        int sum = -1, min, min1;
+        int sum = -1, min, min1, max_a=Integer.MIN_VALUE, max_b=Integer.MIN_VALUE;
         int m1,m2,m3, total=Integer.MAX_VALUE;
 
+        for (int i=0; i<A.size();i++) {
+            if ( A.get(i)>max_a){
+                max_b=max_a;
+                max_a=A.get(i);
+            }
+            else if (A.get(i)>max_b){
+                max_b=A.get(i);
+            }
+        }
+
         for (int k=0; k<=A.size()-3; k++) {
+            if (A.get(k)==max_a||A.get(k)==max_b) continue;
                 min = A.get(k);
                 m1 = k;
                 for (int i = k + 1; i <= A.size() - 2; i++) {
+                    if (A.get(i)==max_a) continue;
                     if (A.get(i) > min) {
                         min1 = A.get(i);
                         m2 = i;
