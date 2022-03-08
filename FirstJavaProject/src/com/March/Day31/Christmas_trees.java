@@ -45,7 +45,7 @@ public class Christmas_trees {
     public int solve(ArrayList<Integer> A, ArrayList<Integer> B) {
 
         int sum = -1, min, min1, max_a=Integer.MIN_VALUE, max_b=Integer.MIN_VALUE;
-        int m1,m2,m3, total=Integer.MAX_VALUE;
+        int m1,m2,m3, total=Integer.MAX_VALUE, min_a = Integer.MAX_VALUE, min_b=Integer.MAX_VALUE;
 
         for (int i=0; i<A.size();i++) {
             if ( A.get(i)>max_a){
@@ -55,6 +55,13 @@ public class Christmas_trees {
             else if (A.get(i)>max_b){
                 max_b=A.get(i);
             }
+            if (A.get(i) < min_a) {
+                min_b = min_a;
+                min_a = A.get(i);
+            }
+            else if (A.get(i)<min_b) {
+                min_b=A.get(i);
+            }
         }
 
         for (int k=0; k<=A.size()-3; k++) {
@@ -62,11 +69,12 @@ public class Christmas_trees {
                 min = A.get(k);
                 m1 = k;
                 for (int i = k + 1; i <= A.size() - 2; i++) {
-                    if (A.get(i)==max_a) continue;
+                    if (A.get(i)==max_a || A.get(i)==min_a) continue;
                     if (A.get(i) > min) {
                         min1 = A.get(i);
                         m2 = i;
                         for (int j = i + 1; j <= A.size() - 1; j++) {
+                            if (A.get(j)==min_a || A.get(j)==min_b) continue;
                             if (A.get(j) > min1) {
                                 m3 = j;
                                 sum = B.get(m1) + B.get(m2) + B.get(m3);
