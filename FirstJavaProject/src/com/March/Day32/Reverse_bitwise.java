@@ -34,32 +34,29 @@ Explanation 2:
 
 package com.March.Day32;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
-public class Reverse_bits {
+public class Reverse_bitwise {
 
     public long reverse(long a) {
 
-        long cnt=0L, ans=0;
-        int i=31, p=1;
-
-        while (a > 0){
-            if (a%2==1) {
-                cnt = cnt + (long)Math.pow(2,i);
-            }
-            i--;
-            a = a/2;
+        long rev = 0;
+        for (int i = 0; i < 32; i++) {
+            rev <<= 1;
+            if ((a & (1 << i)) != 0)
+                rev |= 1;
         }
-        return cnt;
+        return rev;
     }
+
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         long n = sc.nextLong();
-        Reverse_bits obj = new Reverse_bits();
+        Reverse_bitwise obj = new Reverse_bitwise();
         System.out.println(obj.reverse(n));
 
     }
+
 }
