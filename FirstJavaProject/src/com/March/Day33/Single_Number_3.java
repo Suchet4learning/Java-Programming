@@ -34,5 +34,52 @@ Explanation 2:
  */
 package com.March.Day33;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Single_Number_3 {
+
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+
+        ArrayList<Integer> B = new ArrayList<>();
+        int BitXor = 0, mask, x=0;
+
+        for (int i=0; i<A.size(); i++) {
+            BitXor ^= A.get(i);
+        }
+
+        //mask = BitXor & (BitXor-1);
+        mask = BitXor & (-BitXor);
+
+        for (int j=0; j<A.size(); j++) {
+            if ((mask & A.get(j)) !=0) {
+                x ^= A.get(j);
+            }
+        }
+
+        if((BitXor^x) < x) {
+            B.add(BitXor^x);B.add(x);
+        }
+        else {
+            B.add(x);B.add(BitXor^x);
+        }
+
+        return B;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        Single_Number_3 obj = new Single_Number_3();
+
+        for (int i=0; i<n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        System.out.println(obj.solve(a));
+
+    }
+
 }

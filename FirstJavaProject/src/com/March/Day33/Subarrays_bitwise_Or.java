@@ -36,5 +36,44 @@ Except the subarray [0] all the other subarrays has a Bitwise OR = 1
  */
 package com.March.Day33;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Subarrays_bitwise_Or {
+
+    public Long solve(int A, ArrayList<Integer> B) {
+        long count = 0L;
+        int y;
+        for (int x=0; x<B.size(); x++) {
+            if ((B.get(x)&(1))!=0) {
+                count = count + B.size()-x;
+            }
+            else {
+                y = x;
+                while ((B.get(y)&1)==0) {
+                    if (y==B.size()-1) {
+                        y++;
+                        break;
+                    }
+                    y++;
+                }
+                count = count + B.size()-y;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        Subarrays_bitwise_Or obj = new Subarrays_bitwise_Or();
+
+        for (int i=0; i<n; i++) {
+            a.add(sc.nextInt());
+        }
+
+        System.out.println(obj.solve(n,a));
+    }
 }
