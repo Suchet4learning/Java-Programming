@@ -48,6 +48,17 @@ public class A_B_Modulo {
 
         int n = (A<=B?A:B), M=0;
 
+        if (A>B){
+            if (A/B > 0) {
+                n = B * (A/B);
+            }
+        }
+        else{
+            if (B/A > 0) {
+                n = A * (B/A);
+            }
+        }
+
         for (int i=n; i>0; i--){
             if (A%i == B%i) {
                 M = i;
