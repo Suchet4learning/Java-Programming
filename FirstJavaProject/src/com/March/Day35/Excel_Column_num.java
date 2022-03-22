@@ -41,11 +41,11 @@ public class Excel_Column_num {
 
     public int titleToNumber(String A) {
 
-        int ans = 0;
-        for (int i=0; i<A.length(); i++){
-            ans = (A.charAt(0) - 'A') + 1;
+        int ans = 0, P = 1;
+        for (int i=A.length()-1; i>=0; i--){
+            ans = ans + ((A.charAt(i) - 'A') + 1) * P;
+            P = P * 26;
         }
-
         return ans;
     }
 
