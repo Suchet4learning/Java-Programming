@@ -9,6 +9,7 @@ Note that in your output A should precede B.
  */
 package com.March.Day35;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,19 +18,32 @@ public class Repeat_and_Missing {
 
     public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
 
-        ArrayList<Integer> B = new ArrayList<>();
+        BigInteger n = BigInteger.valueOf(A.size());
 
-        int sum = 0, x;
+        BigInteger sum = BigInteger.valueOf(0);
+        BigInteger sum_sq =BigInteger.valueOf(0);
 
-        for (int i : A) {
-            sum = sum + i;
+        for(int x : A)
+        {
+            sum = sum.add(BigInteger.valueOf(x));
+            sum_sq = sum_sq.add(BigInteger.valueOf(x).multiply(BigInteger.valueOf(x)));
         }
 
-        x = ((A.size() * (A.size() + 1)) / 2) - sum;
-        B.add((sum % A.size())-x);
-        B.add(sum % A.size());
+        BigInteger arr_s = n.multiply(n.add(BigInteger.valueOf(1))).divide(BigInteger.valueOf(2));
+        BigInteger arr_sq = arr_s.multiply(BigInteger.valueOf(2).multiply(n).add(BigInteger.valueOf(1))).divide(BigInteger.valueOf(3));
 
-        return B;
+        BigInteger sub = arr_s.subtract(sum);
+        BigInteger add = (arr_sq.subtract(sum_sq)).divide(sub);
+        //(arr_sr-sum_sq)/sub;
+
+        int b = sub.add(add).divide(BigInteger.valueOf(2)).intValue();
+        //(sub+add)/2;
+
+        int a = BigInteger.valueOf(b).subtract(sub).intValue();
+        ArrayList<Integer> ans = new ArrayList<>();
+        ans.add(a);
+        ans.add(b);
+        return ans;
     }
 
     public static void main(String[] args) {
