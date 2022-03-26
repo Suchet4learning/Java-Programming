@@ -34,5 +34,35 @@ Explanation 2:
 
 package com.March.Day38;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 public class Arithmetic_Progression {
+
+    public int solve(ArrayList<Integer> A) {
+
+        Collections.sort(A);
+        int diff = A.get(1)-A.get(0);
+
+        for (int i=2; i<A.size(); i++) {
+            if (A.get(i)-A.get(i-1) != diff) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        Arithmetic_Progression obj = new Arithmetic_Progression();
+
+        for (int i=0; i<n; i++) {
+            a.add(sc.nextInt());
+        }
+        System.out.println(obj.solve(a));
+    }
 }
