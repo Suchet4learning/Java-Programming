@@ -34,5 +34,5 @@ Explanation 2:
 
 package com.March.Day38;
 
-public class Artimetic_Progression {
+public class Arithmetic_Progression {
 }
