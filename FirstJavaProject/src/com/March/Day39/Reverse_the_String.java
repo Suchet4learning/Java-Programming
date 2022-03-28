@@ -42,21 +42,22 @@ import java.util.Scanner;
 public class Reverse_the_String {
     public String solve(String A) {
 
+        A = A.trim();
         StringBuilder B = new StringBuilder();
-        int n = A.length(), j=n-1;
+        int n = A.length(), j;
+        char c = Character.MIN_VALUE;
 
         for (int i=A.length()-1; i>=0; i--) {
             if (A.charAt(i) == ' ' || i==0) {
-                if ((i!=0) && (j!=n-1)) j = i+1;
-                else j = i;
-                if (A.charAt(j)!=' ') {
-                    B.append(A.substring(j, n));
-                    if (A.charAt(i) == ' ') {
-                        B.append(" ");
-                    }
+                j = i+1;
+                if (i==0) j = i;
+                B.append(A.substring(j,n));
+                if (c != ' ' && A.charAt(i)==' ') {
+                    B.append(A.charAt(i));
                 }
                 n = i;
             }
+            c = A.charAt(i);
         }
         return B.toString();
     }
