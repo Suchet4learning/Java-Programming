@@ -36,7 +36,25 @@ import java.util.Scanner;
 public class Change_character {
 
     public int solve(String A, int B) {
-        return B;
+        int[] count = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int j = 0;
+        for (int i=0; i<A.length(); i++) {
+            count[(A.charAt(i)-'a')]++;
+        }
+        Arrays.sort(count);
+        if (B==0) {
+            while (j < 26 && count[j]==0) {
+                j++;
+            }
+        }
+        else {
+            while (B > 0 && j < 26) {
+                B -= count[j];
+                j++;
+            }
+        }
+        if (B < 0) j--;
+        return count.length-j;
     }
 
     public static void main(String[] args) {
