@@ -55,33 +55,22 @@ Explanation 2:
  */
 package com.March.Day40;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Colorful_Number {
 
     public int colorful(int A) {
-        long digit, val;
-        ArrayList<Long> b = new ArrayList<>();
-        HashSet<Long> set = new HashSet<>();
-        while (A>0) {
-            digit = A % 10;
-
-            for (long i : set) {
-                val = i * digit;
-                if (set.contains(val)) {
-                    return 0;
-                } else {
-                    set.add(val);
-                }
+        HashSet<Integer> set = new HashSet<>();
+        String str = Integer.toString(A);
+        for(int i=0;i<str.length();i++){
+            int product = 1;
+            for(int j=i; j<str.length();j++){
+                int num = str.charAt(j) - '0';
+                product *= num;
+                if(set.contains(product)) return 0;
+                set.add(product);
             }
-            if (set.contains(digit)) {
-                return 0;
-            } else {
-                set.add(digit);
-            }
-            A = A / 10;
         }
         return 1;
     }
