@@ -21,13 +21,26 @@ import java.util.*;
 public class Diffk_II {
 
     public int diffPossible(final List<Integer> A, int B) {
-        HashSet<Integer> set = new HashSet<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        if (A.size() < 2 || B < 0) return 0;
         for (int i=0; i<A.size(); i++) {
-            if (set.contains(A.get(i)-B)) {
-                return 1;
+                if (map.containsKey(A.get(i))) {
+                    map.put(A.get(i), map.get(A.get(i))+1);
+                }
+                else {
+                    map.put(A.get(i), 1);
+                }
+        }
+        for (int i=0; i<A.size(); i++) {
+            if (B == 0) {
+                if (map.get(A.get(i)) > 1) {
+                    return 1;
+                }
             }
             else {
-                    set.add(A.get(i));
+                if (map.containsKey(A.get(i) - B)) {
+                    return 1;
+                }
             }
         }
         return 0;
